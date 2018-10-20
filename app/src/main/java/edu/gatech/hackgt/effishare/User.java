@@ -50,7 +50,7 @@ public class User {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return this.userID == user.userID;;
+        return this.userID == user.userID;
     }
 
     @Override

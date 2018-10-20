@@ -24,7 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Join_create" />
-        <activity android:name=".Create_Community"></activity>
+        <activity android:name=".Create_Community" />
+        <activity android:name=".Renter"></activity>
     </application>
 
 </manifest>

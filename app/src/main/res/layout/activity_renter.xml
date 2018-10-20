@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Renter">
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="215dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="139dp"
+        android:text="Message"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button5" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="215dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="34dp"
+        android:text="Deny"
+        app:layout_constraintBottom_toTopOf="@+id/button7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button4" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="170dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="65dp"
+        android:layout_marginBottom="21dp"
+        android:text="BLANK wants to rent BANK"
+        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="215dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="40dp"
+        android:text="Allow"
+        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+</android.support.constraint.ConstraintLayout>

@@ -3,11 +3,11 @@ package edu.gatech.hackgt.effishare;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Create_Community extends AppCompatActivity {
+public class CreateCommunity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create__community);
+        setContentView(R.layout.activity_create_community);
     }
 }

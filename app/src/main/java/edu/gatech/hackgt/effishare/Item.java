@@ -3,7 +3,8 @@ package edu.gatech.hackgt.effishare;
 import java.util.Objects;
 
 /**
- * Item class with name, owner, description, security deposit, check out status, and photoURL
+ * Item class with name, owner, description, security deposit, check out status, photoURL
+ * and an itemID
  */
 public class Item {
 

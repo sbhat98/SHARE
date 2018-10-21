@@ -6,11 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".Checked_out">
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="368dp"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="33dp">
+    YOu
 
-    </android.support.design.widget.TextInputLayout>
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your borrowed items"
+        tools:layout_editor_absoluteX="119dp"
+        tools:layout_editor_absoluteY="16dp" />
 </android.support.constraint.ConstraintLayout>

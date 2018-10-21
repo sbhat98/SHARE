@@ -73,6 +73,9 @@ public class Login extends AppCompatActivity implements LoaderCallbacks<Cursor> 
 
         final Context current_ctx = this;
 
+        Intent i = new Intent(current_ctx, ChatActivity.class);
+        current_ctx.startActivity(i);
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();

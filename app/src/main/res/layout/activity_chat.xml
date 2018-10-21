@@ -7,29 +7,37 @@
     tools:context=".ChatActivity">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_weight="20"
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView">
+        android:layout_weight="20"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/layout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <LinearLayout
+                android:id="@+id/layout1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/layout1">
-            </LinearLayout>
+                android:orientation="vertical"></LinearLayout>
         </RelativeLayout>
     </ScrollView>
 
     <include
+        android:id="@+id/include"
         layout="@layout/message_area"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="468dp"
         android:gravity="bottom"
-        tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="468dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

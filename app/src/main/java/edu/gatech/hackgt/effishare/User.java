@@ -12,12 +12,36 @@ public class User {
     private String username;
     private String email;
     private String userID;
-    private List<Item> checkedOut;
-    private List<Item> putOut;
-    private String community;
+    private List<String> checkedOut;
+    private List<String> putOut;
+    private int community;
 
     public static User currentUser;
     private static DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+
+    public List<String> getCheckedOut() {
+        return checkedOut;
+    }
+
+    public void setCheckedOut(List<String> checkedOut) {
+        this.checkedOut = checkedOut;
+    }
+
+    public List<String> getPutOut() {
+        return putOut;
+    }
+
+    public void setPutOut(List<String> putOut) {
+        this.putOut = putOut;
+    }
+
+    public int getCommunity() {
+        return community;
+    }
+
+    public void setCommunity(int community) {
+        this.community = community;
+    }
 
     public User(String username, String email, String userID) {
         this.username = username;
@@ -71,7 +95,7 @@ public class User {
                 + "\ne-mail: " + this.getEmail();
     }
 
-    private static Map<String, Object> arrayToMap(List<Item> a) {
+    private static Map<String, Object> arrayToMap(List<String> a) {
         if (a == null) {
             return null;
         }

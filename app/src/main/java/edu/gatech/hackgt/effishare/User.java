@@ -8,15 +8,13 @@ public class User {
     private String email;
     private String password;
     private String name;
-    private final int userID;
-    private static int idCounter = 0;
+    private String userID;
 
-    public User(String username, String email, String password) {
+    public User(String username, String email, String name, String password) {
         this.username = username;
         this.email = email;
         this.name = name;
         this.password = password;
-        this.userID = ++idCounter;
     }
 
     public String getUsername() {
@@ -45,6 +43,8 @@ public class User {
 
     public void setName(String name) {this.name = name; }
 
+    public String getUserID() { return userID; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -54,7 +54,8 @@ public class User {
     }
 
     @Override
-    public int hashCode() { return userID; }
+    public int hashCode() { return userID.hashCode(); }
+
 
 
     @Override

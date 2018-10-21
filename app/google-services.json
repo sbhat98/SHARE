@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "727181058344",
+    "firebase_url": "https://share-3b0ed.firebaseio.com",
+    "project_id": "share-3b0ed",
+    "storage_bucket": "share-3b0ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:727181058344:android:3767ee74d75948ca",
+        "android_client_info": {
+          "package_name": "edu.gatech.hackgt.effishare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "727181058344-jr357jkl457e3n893m4blu902iuoq1kp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.gatech.hackgt.effishare",
+            "certificate_hash": "56b00b997f97a17faa2beb042b4ef6a896f7f82b"
+          }
+        },
+        {
+          "client_id": "727181058344-k0loa8lt42icbqto9u99ffa1usj60ecb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMwOJnkRcbd_9-_YLKaIO5aT2paexwi8Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "727181058344-k0loa8lt42icbqto9u99ffa1usj60ecb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

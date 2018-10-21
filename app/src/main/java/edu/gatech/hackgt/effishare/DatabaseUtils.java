@@ -79,6 +79,32 @@ public class DatabaseUtils {
         ref.child("users").child(uuid).child("community").setValue(community);
     }
 
+    private static List<Item> itemsList;
+
+    public static List<Item> getItemsForCommunity(String community) {
+        ref.child("communities").child(community).child("items").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                itemsList =  dataSnapshot.getValue(List.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        while (itemsList == null) {
+            try {
+                Thread.sleep(200);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+        List<Item> retVal = itemsList;
+        itemsList = null;
+        return retVal;
+    }
+
 
     private DatabaseUtils() {}
 }

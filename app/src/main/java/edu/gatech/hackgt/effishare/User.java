@@ -3,27 +3,30 @@ package edu.gatech.hackgt.effishare;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 
 public class User {
 
     private String username;
     private String email;
-    private String password;
-    private String name;
     private String userID;
     private List<Item> checkedOut;
     private List<Item> putOut;
     private String community;
 
+    public static User currentUser;
     private static DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
-    public User(String username, String email, String name, String password, String userID) {
+    public User(String username, String email, String userID) {
         this.username = username;
         this.email = email;
-        this.name = name;
-        this.password = password;
         this.userID = userID;
+    }
+
+    public User() {
+        this("", "", "");
     }
 
     public String getUserID() {
@@ -50,12 +53,6 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() { return password; }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -74,14 +71,31 @@ public class User {
                 + "\ne-mail: " + this.getEmail();
     }
 
-    public void writeToDatabase() {
-        mDatabase.child("users").child(userID).child("name").setValue(name);
-        mDatabase.child("users").child(userID).child("username").setValue(username);
-        mDatabase.child("users").child(userID).child("uuid").setValue(userID);
-        mDatabase.child("users").child(userID).child("checkedOut").setValue(checkedOut);
-        mDatabase.child("users").child(userID).child("putOut").setValue(putOut);
-        mDatabase.child("users").child(userID).child("community").setValue(community);
+    private static Map<String, Object> arrayToMap(List<Item> a) {
+        if (a == null) {
+            return null;
+        }
+        HashMap<String, Object> result = new HashMap<String, Object>();
+        for (int i = 0; i < a.size(); i++) {
+            result.put("" + i, a.get(i));
+        }
+        return result;
     }
 
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<String, Object>();
+        result.put("username", username);
+        result.put("checkedOut", arrayToMap(checkedOut));
+        result.put("putOut", arrayToMap(putOut));
+        result.put("community", community);
+        result.put("email", email);
+        return result;
+    }
+
+    public void writeToDatabase() {
+        HashMap<String, Object> write = new HashMap<String, Object>();
+        write.put("/users/" + userID, toMap());
+        mDatabase.updateChildren(write);
+    }
 
 }

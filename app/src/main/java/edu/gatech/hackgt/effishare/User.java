@@ -1,24 +1,19 @@
 package edu.gatech.hackgt.effishare;
 
-import android.support.annotation.NonNull;
-
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.List;
 
 public class User {
 
     private String username;
     private String email;
     private String userID;
-    private ArrayList<Item> checkedOut;
-    private ArrayList<Item> putOut;
+    private List<Item> checkedOut;
+    private List<Item> putOut;
     private String community;
 
     public static User currentUser;
@@ -63,7 +58,7 @@ public class User {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return this.userID == user.userID;
+        return this.userID.equals(user.userID);
     }
 
     @Override
@@ -76,7 +71,7 @@ public class User {
                 + "\ne-mail: " + this.getEmail();
     }
 
-    private static Map<String, Object> arrayToMap(ArrayList<Item> a) {
+    private static Map<String, Object> arrayToMap(List<Item> a) {
         if (a == null) {
             return null;
         }

@@ -28,7 +28,8 @@
         <activity android:name=".ChatActivity" />
         <activity android:name=".Add_Item" />
         <activity android:name=".Checked_out" />
-        <activity android:name=".SearchItemScreen"></activity>
+        <activity android:name=".SearchItemScreen" />
+        <activity android:name=".Renter_List"></activity>
     </application>
 
 </manifest>

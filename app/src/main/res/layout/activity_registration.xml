@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Registration">
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/textInputEditText4"
+        android:layout_width="312dp"
+        android:layout_height="49dp"
+        android:hint="Name"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="395dp" />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/textInputEditText2"
+        android:layout_width="312dp"
+        android:layout_height="49dp"
+        android:hint="example@effishare.com"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="168dp" />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/textInputEditText"
+        android:layout_width="312dp"
+        android:layout_height="49dp"
+        android:hint="Username"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="74dp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="145dp" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="255dp" />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/textInputEditText3"
+        android:layout_width="312dp"
+        android:layout_height="49dp"
+        android:hint="Password"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="291dp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:text="Name"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="367dp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registration"
+        tools:layout_editor_absoluteX="155dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="35dp" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="116dp"
+        android:layout_height="48dp"
+        android:text="Register"
+        tools:layout_editor_absoluteX="218dp"
+        tools:layout_editor_absoluteY="456dp" />
+</android.support.constraint.ConstraintLayout>

@@ -16,6 +16,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".JoinCommunityScreen" />
         <activity android:name=".SearchItemScreen" />
+        <activity android:name=".Rentee_Request" />
+        <activity android:name=".Registration"></activity>
     </application>
 
 </manifest>

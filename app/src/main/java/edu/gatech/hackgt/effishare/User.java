@@ -3,8 +3,7 @@ package edu.gatech.hackgt.effishare;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
-import java.util.Objects;
+import java.util.List;
 
 public class User {
 
@@ -13,8 +12,8 @@ public class User {
     private String password;
     private String name;
     private String userID;
-    private ArrayList<Item> checkedOut;
-    private ArrayList<Item> putOut;
+    private List<Item> checkedOut;
+    private List<Item> putOut;
     private String community;
 
     private static DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -62,7 +61,7 @@ public class User {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return this.userID == user.userID;
+        return this.userID.equals(user.userID);
     }
 
     @Override

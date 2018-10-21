@@ -17,7 +17,7 @@ public class DatabaseUtils {
     private static List<Item> checkedList;
 
     public static List<Item> getCheckedOutItems(String userUUID) {
-        ref.child("users").child(userUUID).child("checkedOutItems").addValueEventListener(new ValueEventListener() {
+        ref.child("users").child(userUUID).child("checkedOut").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 checkedList =  dataSnapshot.getValue(List.class);
@@ -64,6 +64,19 @@ public class DatabaseUtils {
         String retVal = communityString;
         communityString = null;
         return retVal;
+    }
+
+    public static void addUserToDB(User user) {
+        user.writeToDatabase();
+    }
+
+    /**
+     * Updates the community of the user object and adds the user object to the community object
+     * @param uuid
+     * @param community
+     */
+    public static void updateUserCommunity(String uuid, String community) {
+        ref.child("users").child(uuid).child("community").setValue(community);
     }
 
 

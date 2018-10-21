@@ -25,7 +25,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="49dp"
         android:layout_marginBottom="145dp"
-        android:text="USER's ITEM \n               Description"
         app:layout_constraintBottom_toTopOf="@+id/button8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

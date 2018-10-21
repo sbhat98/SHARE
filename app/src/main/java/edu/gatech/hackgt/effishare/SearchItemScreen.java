@@ -85,6 +85,15 @@ public class SearchItemScreen extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1,int position, long arg3)
             {
+                Intent i = new Intent(curr_ctx, Rentee_Request.class);
+                Item tmp = item_data_list.get(position);
+                i.putExtra("name", tmp.getName());
+                i.putExtra("owner", tmp.getOwner());
+                i.putExtra("description", tmp.getDescription());
+                i.putExtra("securityDepositValue", tmp.getSecurityDepositValue());
+                i.putExtra("checkedOut", tmp.isCheckedOut());
+                i.putExtra("itemPhotoURL", tmp.getItemPhotoURL());
+                curr_ctx.startActivity(i);
                 Toast.makeText(curr_ctx, "You clicked " + item_data_list.get(position).getName(), Toast.LENGTH_LONG).show();
             }
         });
@@ -98,7 +107,6 @@ public class SearchItemScreen extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 //                        Log.println(Log.DEBUG, "Item debug", "Got item");
                         Item i = dataSnapshot.getValue(Item.class);
-                        item_list.add(i.getName());
                         item_data_list.add(i);
                     }
 

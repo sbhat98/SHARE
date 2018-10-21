@@ -27,7 +27,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ChatActivity" />
-        <activity android:name=".Add_Item"></activity>
+        <activity android:name=".Add_Item" />
+        <activity android:name=".Checked_out"></activity>
     </application>
 
 </manifest>

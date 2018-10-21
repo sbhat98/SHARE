@@ -73,7 +73,7 @@ public class Login extends AppCompatActivity implements LoaderCallbacks<Cursor> 
 
         final Context current_ctx = this;
 
-        Intent i = new Intent(current_ctx, ChatActivity.class);
+        Intent i = new Intent(current_ctx, SearchItemScreen.class);
         current_ctx.startActivity(i);
 
         // Set up the login form.

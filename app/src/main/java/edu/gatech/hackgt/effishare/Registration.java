@@ -44,7 +44,7 @@ public class Registration extends AppCompatActivity {
                 User u = new User(username, email, uid);
                 User.currentUser = u;
                 u.writeToDatabase();
-                // call next activity:
+                // call link to Join_Create:
                 curr_ctx.startActivity(new Intent(curr_ctx, Join_create.class));
             }
         });

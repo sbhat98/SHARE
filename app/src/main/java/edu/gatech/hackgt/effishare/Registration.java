@@ -1,5 +1,8 @@
 package edu.gatech.hackgt.effishare;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Registration extends AppCompatActivity {
 
     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+    Context curr_ctx = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,7 @@ public class Registration extends AppCompatActivity {
                 User u = new User(username, email, uid);
                 User.currentUser = u;
                 u.writeToDatabase();
+                curr_ctx.startActivity(new Intent(curr_ctx, Join_create.class));
             }
         });
     }

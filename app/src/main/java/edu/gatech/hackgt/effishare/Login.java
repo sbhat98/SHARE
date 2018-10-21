@@ -352,7 +352,7 @@ public class Login extends AppCompatActivity implements LoaderCallbacks<Cursor> 
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
                     }
-                })
+                });
                 return true;
             }
             // TODO: register the new account here.

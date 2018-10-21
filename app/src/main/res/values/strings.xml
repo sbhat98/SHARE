@@ -105,4 +105,5 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_beta_login">Sign in</string>
+    <string name="title_activity_login">Sign in</string>
 </resources>

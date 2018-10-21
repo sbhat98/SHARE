@@ -21,6 +21,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,9 +31,11 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -71,16 +74,12 @@ public class Login extends AppCompatActivity implements LoaderCallbacks<Cursor> 
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    final Context current_ctx = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        final Context current_ctx = this;
-
-        Intent i = new Intent(current_ctx, SearchItemScreen.class);
-        current_ctx.startActivity(i);
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -211,9 +210,39 @@ public class Login extends AppCompatActivity implements LoaderCallbacks<Cursor> 
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-            showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
+            FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password);
+            FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+                @Override
+                public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                    FirebaseUser usr = FirebaseAuth.getInstance().getCurrentUser();
+                    if (usr == null) {
+                        Log.println(Log.ERROR, "Oops", "Bad login");
+                        return;
+                    }
+                    final String uid = usr.getUid();
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(uid);
+                    ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            String email = dataSnapshot.child("email").getValue().toString();
+                            String username = dataSnapshot.child("username").getValue().toString();
+                            User.currentUser = new User(username, email, uid);
+                            try {
+                                Thread.sleep(2000);
+                            } catch (InterruptedException e) {
+
+                            }
+                            Intent i = new Intent(current_ctx, SearchItemScreen.class);
+                            current_ctx.startActivity(i);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+            });
         }
     }
 
@@ -349,15 +378,23 @@ public class Login extends AppCompatActivity implements LoaderCallbacks<Cursor> 
                         String email = dataSnapshot.child("email").getValue().toString();
                         String username = dataSnapshot.child("username").getValue().toString();
                         User.currentUser = new User(username, email, uid);
+                        try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e) {
+
+                        }
+                        Intent i = new Intent(current_ctx, SearchItemScreen.class);
+                        current_ctx.startActivity(i);
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
                     }
-                })
+                });
                 return true;
             }
+            Log.println(Log.ERROR, "Hi", "Bad login");
             // TODO: register the new account here.
             return true;
         }

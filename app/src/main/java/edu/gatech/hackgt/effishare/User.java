@@ -16,6 +16,9 @@ public class User {
     private List<String> putOut;
     private String community;
 
+    public static User currentUser;
+    private static DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+
     public List<String> getCheckedOut() {
         return checkedOut;
     }
@@ -39,9 +42,6 @@ public class User {
     public void setCommunity(String community) {
         this.community = community;
     }
-
-    public static User currentUser;
-    private static DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
     public User(String username, String email, String userID) {
         this.username = username;

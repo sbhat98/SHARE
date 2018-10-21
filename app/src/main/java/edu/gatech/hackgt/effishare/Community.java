@@ -1,11 +1,18 @@
 package edu.gatech.hackgt.effishare;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Community {
     private String ID;
     private ArrayList<String> items;
     private ArrayList<String> users;
+
+    private static DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
     public Community(String ID) {
         this.ID = ID;
@@ -35,5 +42,19 @@ public class Community {
 
     public void setUsers(ArrayList<String> users) {
         this.users = users;
+    }
+
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> retVal = new HashMap<>();
+        retVal.put("ID", ID);
+        retVal.put("items", items);
+        retVal.put("users", users);
+        return retVal;
+    }
+
+    public void writeToDatabase() {
+        HashMap<String, Object> write = new HashMap<>();
+        write.put("/communities/" + ID, toMap());
+        mDatabase.updateChildren(write);
     }
 }

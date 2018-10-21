@@ -8,31 +8,45 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Community {
-    private String ID;
-    private ArrayList<String> items;
+    private int ID;
+    private String name;
+    private ArrayList<Integer> items;
     private ArrayList<String> users;
 
     private static DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
-    public Community(String ID) {
+    public Community() {
+        this(-1, "");
+    }
+
+    public Community(int ID, String name) {
         this.ID = ID;
+        this.name = name;
         this.items = new ArrayList<>();
         this.users = new ArrayList<>();
     }
 
-    public String getID() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
-    public ArrayList<String> getItems() {
+    public ArrayList<Integer> getItems() {
         return items;
     }
 
-    public void setItems(ArrayList<String> items) {
+    public void setItems(ArrayList<Integer> items) {
         this.items = items;
     }
 

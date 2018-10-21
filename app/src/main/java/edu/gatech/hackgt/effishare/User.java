@@ -14,7 +14,7 @@ public class User {
     private String userID;
     private List<String> checkedOut;
     private List<String> putOut;
-    private String community;
+    private int community;
 
     public static User currentUser;
     private static DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -35,11 +35,11 @@ public class User {
         this.putOut = putOut;
     }
 
-    public String getCommunity() {
+    public int getCommunity() {
         return community;
     }
 
-    public void setCommunity(String community) {
+    public void setCommunity(int community) {
         this.community = community;
     }
 

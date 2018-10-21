@@ -1,52 +1,53 @@
 package edu.gatech.hackgt.effishare;
 
-import java.util.Objects;
-
 /**
  * Item class with name, owner, description, security deposit, check out status, photoURL
- * and an itemID
+ * and an ID
  */
 public class Item {
 
-    private String itemName;
+    private String name;
     private String owner;  // no setter method
-    private String itemDescription;
+    private String description;
     private double securityDepositValue;
-    private boolean isCheckedOut;
+    private boolean checkedOut;
     private String itemPhotoURL;
-    private final int itemID;
-    private static int idCounter = 0;
+    private int ID;
+
+    public Item() {
+        this("", "", "", 0, false, "");
+    }
 
     public Item(String itemName, String owner, String itemDescription,
                 double securityDepositValue, boolean isCheckedOut, String itemPhotoURL) {
-        this.itemName = itemName;
+        this.name = itemName;
         this.owner = owner;
-        this.itemDescription = itemDescription;
+        this.description = itemDescription;
         this.securityDepositValue = securityDepositValue;
-        this.isCheckedOut = isCheckedOut;
+        this.checkedOut = isCheckedOut;
         this.itemPhotoURL = itemPhotoURL;
-        this.itemID = ++idCounter;
+        this.ID = 0;
 
     }
 
-    public String getItemName() {
-        return itemName;
+    public String getName() {
+        return name;
     }
 
     public void setItemName(String itemName) {
-        this.itemName = itemName;
+        this.name = itemName;
     }
 
     public String getOwner() {
         return owner;
     }
 
-    public String getItemDescription() {
-        return itemDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setItemDescription(String itemDescription) {
-        this.itemDescription = itemDescription;
+    public void setDescription(String itemDescription) {
+        this.description = itemDescription;
     }
 
     public double getSecurityDepositValue() {
@@ -57,12 +58,24 @@ public class Item {
         this.securityDepositValue = securityDepositValue;
     }
 
-    public boolean getIsCheckedOut() {
-        return isCheckedOut;
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
-    public void setIsCheckedOut(boolean IsCheckedOut) {
-        isCheckedOut = IsCheckedOut;
+    public boolean isCheckedOut() {
+        return checkedOut;
+    }
+
+    public void setCheckedOut(boolean checkedOut) {
+        this.checkedOut = checkedOut;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getItemPhotoURL() {
@@ -75,9 +88,9 @@ public class Item {
 
     @Override
     public String toString() {
-        return "" + this.getItemName() + " is owned by " + this.getOwner()
+        return "" + this.getName() + " is owned by " + this.getOwner()
                 + " and has a security deposit of $" + this.getSecurityDepositValue()
-                + ". This item is" + (this.getIsCheckedOut() ? " currently checked out"
+                + ". This item is" + (this.isCheckedOut() ? " currently checked out"
                 : " available for rent");
     }
 
@@ -86,12 +99,12 @@ public class Item {
         if (this == o) return true;
         if (!(o instanceof Item)) return false;
         Item item = (Item) o;
-        return this.itemID == item.itemID;
+        return this.ID == item.ID;
     }
 
     @Override
     public int hashCode() {
-        return itemID;
+        return ID;
     }
 
 }

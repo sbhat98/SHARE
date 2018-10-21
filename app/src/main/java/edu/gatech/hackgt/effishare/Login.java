@@ -32,6 +32,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -334,14 +340,24 @@ public class Login extends AppCompatActivity implements LoaderCallbacks<Cursor> 
                 return false;
             }
 
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
-            }
+            if (FirebaseAuth.getInstance().signInWithEmailAndPassword(mEmail, mPassword).isSuccessful()) {
+                final String uid = FirebaseAuth.getInstance().getUid();
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(uid);
+                ref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        String email = dataSnapshot.child("email").getValue().toString();
+                        String username = dataSnapshot.child("username").getValue().toString();
+                        User.currentUser = new User(username, email, uid);
+                    }
 
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                })
+                return true;
+            }
             // TODO: register the new account here.
             return true;
         }

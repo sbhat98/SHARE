@@ -11,7 +11,7 @@ public class User {
     private final int userID;
     private static int idCounter = 0;
 
-    public User(String username, String email, String password) {
+    public User(String username, String email, String name, String password) {
         this.username = username;
         this.email = email;
         this.name = name;
@@ -50,7 +50,7 @@ public class User {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return this.userID == user.userID;;
+        return this.userID == user.userID;
     }
 
     @Override

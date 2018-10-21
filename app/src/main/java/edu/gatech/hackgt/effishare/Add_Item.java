@@ -21,18 +21,13 @@ public class Add_Item extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add__item);
 
-        addI = (Button) findViewById(R.id.button13);
+        addI = (Button) findViewById(R.id.button_do_additem);
         addI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openSearchItem();
+                
             }
         });
 
-    }
-
-    public void openSearchItem() {
-        Intent intentAddI = new Intent(curr_ctx, SearchItemScreen.class);
-        curr_ctx.startActivity(intentAddI);
     }
 }

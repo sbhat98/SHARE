@@ -3,7 +3,7 @@ package edu.gatech.hackgt.effishare;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 public class SearchItemScreen extends AppCompatActivity {
@@ -37,7 +38,7 @@ public class SearchItemScreen extends AppCompatActivity {
         setContentView(R.layout.activity_search_item_screen);
 
 
-        addItem = (Button) findViewById(R.id.button9);
+        addItem = (Button) findViewById(R.id.button_show_additem);
         addItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,6 +72,7 @@ public class SearchItemScreen extends AppCompatActivity {
 
         ListView lv = findViewById(R.id.listview_items);
         final List<String> item_list = new ArrayList<>();
+        final ArrayList<Item> item_data_list = new ArrayList<>();
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
           this,
@@ -79,7 +81,14 @@ public class SearchItemScreen extends AppCompatActivity {
         );
 
         lv.setAdapter(arrayAdapter);
-        final ArrayList<Item> item_data_list = new ArrayList<>();
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1,int position, long arg3)
+            {
+                Toast.makeText(curr_ctx, "You clicked " + item_data_list.get(position).getName(), Toast.LENGTH_LONG).show();
+            }
+        });
+
         final ValueEventListener itemsValueListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -87,7 +96,7 @@ public class SearchItemScreen extends AppCompatActivity {
                 final ValueEventListener singleItemValueListener = new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Log.println(Log.DEBUG, "Item debug", "Got item");
+//                        Log.println(Log.DEBUG, "Item debug", "Got item");
                         Item i = dataSnapshot.getValue(Item.class);
                         item_list.add(i.getName());
                         item_data_list.add(i);
